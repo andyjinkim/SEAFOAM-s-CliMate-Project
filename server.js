@@ -10,6 +10,7 @@ var express             = require('express')
     ,session            = require('express-session')
     ,passport           = require('passport')
     ,passportConfig     = require('./config/passport.js')
+    ,request            = require('request')
 
 // environment port
 var port = process.env.PORT || 3000
@@ -58,11 +59,16 @@ app.use(express.static('public'))
 
 // root route
 app.get('/', function(req,res){
-  res.render('home')
+  // res.render('home')
+  request(yelp.apiURL, function(err, response, body){
+    res.json(body)
+  //return callback(err, response, body)
+  })
 })
 
 //user Routes
 var userRoutes = require('./routes/user_routes.js')
+//yelp.request_yelp()
 app.use('/', userRoutes)
 
 

@@ -1,0 +1,61 @@
+<div>
+  <input></input>
+<!-- This is where we are going to render the top 5 yelp restaurants based on query. simulate weather underground input field and button press to render top 5. -->
+</div>
+
+<script>
+$.ajax
+get request, for the test route in user_routes.js
+</script>
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Yelp</title>
+    <script type="text/javascript" src="/jquery-2.1.4.js">
+    </script>
+  </head>
+  <body>
+    <h1>Welcome to the Yelp API</h1>
+    <button type="button" id="get-restaurants">Get my restaurants</button>
+    <ul class="all-restaurants">
+    <!-- <ul class="all-movies" data="./11-imdb-top-10000.txt"> -->
+    </ul>
+
+    <script type="text/javascript">
+
+    $('#get-restaurants').on('click', function(evt){
+      $.ajax({
+        url: '/testing',
+        method: 'GET',
+        success: function(data){
+          console.log(data)
+          data.forEach(function(movie){
+            var nameSpan = '<span class="movie-name">' + movie.name + '</span>'
+            var ratingSpan = '<span class="movie-rating">' + movie.rating + '</span>'
+            var showDetails = '<button id="' + movie._id + '" class="show-details">Show Details</button>'
+            var li = '<li>' + nameSpan + ' ' + ratingSpan + ' ' + showDetails + '</li>'
+            $('.all-movies').append(li)
+          })
+          $('.show-details').on('click', function(evt){
+            console.log('lets make a request to get the details')
+            console.log(evt.target.id)
+            $.ajax({
+              url: '/movies/' + evt.target.id
+              ,method: 'GET'
+              ,success: function(data){
+                console.log(data)
+              }
+            })
+                })
+              }
+            })
+          })
+        }
+      })
+    })
+    </script>
+  </body>
+</html>
