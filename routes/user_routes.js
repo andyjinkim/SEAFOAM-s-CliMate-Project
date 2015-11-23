@@ -70,9 +70,9 @@ apiURL = url + '?' + paramURL
 ///////////////// END YELP API //////////////////////
 //
 // //
-userRouter.route('/test')
+userRouter.route('/:test')
   .get(function(req,res){
-    request_yelp({location:"Los Angeles"}, function(err, response, body){
+    request_yelp({location: req.params.test}, function(err, response, body){
       res.json(JSON.parse(body))
     })
   })

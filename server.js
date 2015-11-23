@@ -57,6 +57,10 @@ app.use(flash())
 // set the public folder as the static assets serving folder
 app.use(express.static('public'))
 
+app.get('/yelpapi', function(req,res){
+  res.render('yelpapi.ejs')
+})
+
 // root route
 app.get('/', function(req,res){
   // res.render('home')
@@ -65,6 +69,8 @@ app.get('/', function(req,res){
   //return callback(err, response, body)
   })
 })
+
+
 
 //user Routes
 var userRoutes = require('./routes/user_routes.js')
