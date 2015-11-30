@@ -362,7 +362,7 @@ $('#submit').on('click', function(){
     }
   })
 })
-
+``
 socket.on('tweets', function(tweet){
   console.log(tweet)
   $(".twitterStream").text(tweet.text)
