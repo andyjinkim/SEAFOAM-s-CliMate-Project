@@ -1,205 +1,28 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
 body {
-  font-family: 'Source Sans Pro', sans-serif;
-  margin: auto;}
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
 
-  #canvasHolder {
-    position: absolute;
-    top: 300px;
-    left: 100px;
-    width: 600px;
-    height: 400px;
-  }
-
-  #background-img {
-    position: absolute;
-    top: 300px;
-    left: 100px;
-    width: 600px;
-    height: 400px;
-
-  }
-
-        /*main container */
-        .col-md-8 {
-          position:absolute;
-          width: 629px;
-          height: 375px;
-        }
-
-        /*right/left sidebars*/
-        .col-md-2 {
-          width: 150px;
-          height: 375px;
-        }
-
-        /*container that api's will populate*/
-        .apiDisplay {
-          position:relative;
-          top: 377px;
-          width: 929px;
-          height: 500px;
-        }
-
-        .twitterStream {
-
-          padding-left: 15px;
-          padding-right: 15px;
-          padding-top: 10px;
-          width: 154.656px;
-          height: 300px;
-          background-color: #55acee;
-          color: white;
-          word-wrap: break-word;
-          text-align: justify;
-        }
-
-        .twitterIcon {
-          height: 40px;
-          width: 40px;
-        }
+main {
+  flex: 1 0 auto;
+}
 
 
-      /*right sidebar*/
-    .weather {
-      border: 1px solid #eee;
-      box-shadow: 0 2px 0 rgba(204, 204, 204, 0.15);
-      margin-bottom: 1rem;
-      border-radius: 0.25rem;
-      background: white;
-      position: relative; }
-      .weather .header {
-        background: #fc6e51;
-        height: 6.2rem;
-        font-size: 15px;
-        font-weight: 600;
-        color: #fff;
-        line-height: 6.2rem;
-        padding: 0 1.25rem;
-        overflow: hidden;
-        position: relative; }
-        .weather .header h2 {
-          margin: 0;
-          color: #fff;
-          font-size: 1.8rem;
-          font-weight: bold;
-          -webkit-margin-before: 0.83em;
-          -webkit-margin-after: 0.83em;
-          -webkit-margin-start: 0px;
-          -webkit-margin-end: 0px; }
-      .weather .weather-icon {
-        position: absolute;
-        right: 1.25rem;
-        top: 2.2rem;
-        font-size: 1.7rem;
-        line-height: 1em; }
-      .weather .weather-icon-shadow {
-        position: absolute;
-        color: rgba(0, 0, 0, 0.05);
-        font-size: 8rem;
-        top: -1.25rem;
-        right: -1.25rem;
-        transform: rotate(-20deg); }
-      .weather ul {
-        margin: 0;
-        padding: 0;
-        list-style: none; }
-      .weather .day {
-        padding: 1.25rem 1.9rem;
-        border-bottom: 1px solid #f2f2f2;
-        color: #888888; }
-        .weather .day:last-child {
-          border-bottom: none; }
-        .weather .day .image {
-          display: block;
-          float: left;
-          margin-right: 0.75rem; }
-        .weather .day .day-title {
-          text-transform: uppercase;
-          color: #666666;
-          font-weight: 600; }
-        .weather .day .day-icon {
-          margin-top: -0.7rem;
-          color: #666666;
-          font-size: 1.25rem;
-          float: right; }
-
-
-        li.day {
-          width: 148.4px;
-          height: 85px;
-        }
-
-        div.row {
-          padding-top: 15px;
-          padding-bottom: 25px;
-          height: 100px;
-        }
-
-        #yelpAPIbutton{
-          background-image: url('../uberlogo.jpg');
-          background-repeat: no-repeat;
-          background-position: center;
-        }
-
-
-        #uberAPIbutton{
-          background-image: url('../yelplogo.jpg');
-          background-repeat: no-repeat;
-          background-position: center;
-        }
-
-        #settingButton{
-          background-image: url('../settingicon.png');
-          background-repeat: no-repeat;
-          background-position: center;
-        }
-
-
-        .btn-xl{
-          width: 60px;
-          height: 60px;
-        }
-
-        #submit{
-          margin-right: 100px;
-        }
-
-
-
-        #parent_div_1{
-            position: absolute;
-            width:140px;
-            height:140px;
-            border:1px solid blue;
-            margin-right:10px;
-            float:left;
-        }
-        #parent_div_2{
-            position: relative;
-            left: 140px;
-            top: -335px;
-            width:400px;
-            height:140px;
-            border:1px solid blue;
-            margin-right:10px;
-            float:left;
-            background-color: #bf0f02;
-            color: white;
-        }
-
-        #parent_div_3{
-            position: relative;
-            left: 130px;
-            top: -335px;
-            width:400px;
-            height:140px;
-            border:1px solid blue;
-            margin-right:10px;
-            float:left;
-        }
-
-
-        .child_div_1{
-          float:left;
-          margin-right:5px;
-        }
+#index-banner.section.no-pad-bot {
+  background: url('/seafoam-copy.jpg') no-repeat center fixed;
+}

@@ -95,9 +95,9 @@ app.use(passport.session())
 app.use(flash())
 
 // root route
-app.get('/', function(req,res){
-  res.render('home')
-})
+// app.get('/', function(req,res){
+//   res.render('home')
+// })
 
 //user Routes
 var userRoutes = require('./routes/user_routes.js')

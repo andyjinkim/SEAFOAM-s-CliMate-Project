@@ -41,6 +41,8 @@
 var weatherPattern;
 var weatherTypes = ["sunny","rainy","snowy","cloudy"];
 var wundergroundType;
+var dayInfo = [];
+
 
 var weatherObject = { sunny:["Clear",
 			"Unknown",
@@ -131,9 +133,9 @@ function determineWeather(forecast,checkForecast){
 var yelpURL = 'http://api.yelp.com/v2/search'
 var conditionsURL = 'https://api.wunderground.com/api/726c0ba149d8a811/conditions/q/'
 var forecastURL = 'https://api.wunderground.com/api/726c0ba149d8a811/forecast/q/'
-var $inpCtry = $('#appendCountryUrl')
-var $inpState = $('#appendStateUrl')
-var $inpCity = $('#appendCityUrl')
+// var $inpCtry = $('#appendCountryUrl')
+// var $inpState = $('#appendStateUrl')
+// var $inpCity = $('#appendCityUrl')
 var city;
 var state;
 
@@ -225,7 +227,7 @@ function getLocationAndMakeCalls(lat, lng) {
         }
       }
       //state data
-      geoCity = city.short_name
+      geoCity = city.long_name
       geoStateAbrev = state.short_name
       geoStateFull = state.long_name
       console.log(geoCity + " " + geoStateAbrev + " " + geoStateFull)
@@ -242,17 +244,59 @@ function getLocationAndMakeCalls(lat, lng) {
         wundergroundType = data.current_observation.weather
         //Use this function to pass weather type returned from weather underground
         determineWeather(wundergroundType,weatherObject)
-        $('#temperature').text(data.current_observation.temperature_string)
+        // $('#temperature').text(data.current_observation.temperature_string.icon)
       }
     })
     $.ajax({
       url: forecastURL + geoStateAbrev + '/' + geoCity + '.json',
       method: 'GET',
       success: function(data){
-        $('#day1').text(data.forecast.txt_forecast.forecastday[1].fcttext)
-        console.log('=====forecast======',data.forecast.txt_forecast.forecastday[1].fcttext)
+				data.forecast.simpleforecast.forecastday.forEach(function(day,index){
+					console.log('===DAY INFO===',index, day);
+					$('#temp' + index + 'H').text(day.high.fahrenheit + "F")
+					$('#temp' + index + 'L').text(day.low.fahrenheit + "F")
+					$('#day' + index + "title").text(day.date.weekday_short)
+					$('#img' + index).attr('src',day.icon_url)
+				})
+				data.forecast.txt_forecast.forecastday.forEach(function (info) {
+					dayInfo.push(info.fcttext)
+				})
+				// $('.day1title').text(data.forecast.txt_forecast.forecastday[0].title)
+				// $('#day1').text(data.forecast.simpleforecast.forecastday[1].high.fahrenheit)
+				// $('#day1').text(data.forecast.simpleforecast.forecastday[1].low.fahrenheit)
+				// $('#day1').text(data.forecast.simpleforecast.forecastday[1].icon)
       }
     })
+		// $.ajax({
+		// 	url: forecastURL + geoStateAbrev + '/' + geoCity + '.json',
+		// 	method: 'GET',
+		// 	success: function(data){
+		// 		$('.day2title').text(data.forecast.txt_forecast.forecastday[2].title)
+		// 		$('#day2').text(data.forecast.simpleforecast.forecastday[2].high.fahrenheit)
+		// 		$('#day2').text(data.forecast.simpleforecast.forecastday[2].low.fahrenheit)
+		// 		$('#day2').text(data.forecast.simpleforecast.forecastday[2].icon)
+		// 	}
+		// })
+		// $.ajax({
+		// 	url: forecastURL + geoStateAbrev + '/' + geoCity + '.json',
+		// 	method: 'GET',
+		// 	success: function(data){
+		// 		$('.day3title').text(data.forecast.txt_forecast.forecastday[4].title)
+		// 		$('#day3').text(data.forecast.simpleforecast.forecastday[3].high.fahrenheit)
+		// 		$('#day3').text(data.forecast.simpleforecast.forecastday[3].low.fahrenheit)
+		// 		$('#day3').text(data.forecast.simpleforecast.forecastday[3].icon)
+		// 	}
+		// })
+		// $.ajax({
+		// 	url: forecastURL + geoStateAbrev + '/' + geoCity + '.json',
+		// 	method: 'GET',
+		// 	success: function(data){
+		// 		$('.day4title').text(data.forecast.txt_forecast.forecastday[6].title)
+		// 		$('#day4').text(data.forecast.simpleforecast.forecastday[4].high.fahrenheit)
+		// 		$('#day4').text(data.forecast.simpleforecast.forecastday[4].low.fahrenheit)
+		// 		$('#day4').text(data.forecast.simpleforecast.forecastday[4].icon)
+		// 	}
+		// })
     ////// Yelp and Uber API Calls ///////////////////////////////////////////////////////
     $.ajax({
     url: '/yelp/' + geoCity + geoStateAbrev,
@@ -280,8 +324,15 @@ function getLocationAndMakeCalls(lat, lng) {
           else
             $(".yelp").append('<li>'+ business.name + ', ' + business.location.city + ' - ' + business.phone + '</li>')
           }
-        }}
+        }
+				//Run Twitter Stream based on geo location
+
+				}
       })
+			var search_term = geoCity
+			console.log(search_term)
+			socket.emit('updateTerm', search_term)
+			$(".yelp").empty()
   })
 }
 
@@ -366,4 +417,9 @@ $('#submit').on('click', function(){
 socket.on('tweets', function(tweet){
   console.log(tweet)
   $(".twitterStream").text(tweet.text)
+})
+
+//show details of the current days weather
+$('.showDetails').on('click',function(){
+	$('#details' + this.id).text(dayInfo[this.id])
 })

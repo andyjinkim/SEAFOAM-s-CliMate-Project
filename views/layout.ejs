@@ -2,16 +2,58 @@
 <html>
 <head>
 	<title>CliMate by SeaFoam</title>
-	<link rel="stylesheet" href="css/styles.css"></link>
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<script src="scripts/rainyday.js" charset="utf-8"></script>
-	<script type="text/javascript" src="https://cdn.socket.io/socket.io-1.3.7.js"></script>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+	<link rel="stylesheet" href="/css/styles.css" media="screen" title="no title" charset="utf-8">
+	<!-- Compiled and minified CSS -->
+	<!-- Compiled and minified JavaScript -->
 </head>
 <body>
-	<div class="container">
-		<%- body %>
-	</div>
+	<nav class="teal lighten-2 fixed" role="navigation">
+		<div class="nav-wrapper container "><a  id="logo-container" href="/" class="brand-logo teal-text text-darken-3">SeaFoam</a>
+
+			<ul class="right hide-on-med-and-down">
+				<% if( user == undefined || user == '') {%>
+				<li><a href="/login" class="white-text ">Login</a></li>
+				<% }else {%>
+				<li><a href="/profile" class="white-text text-accent-2">Welcome back, <%= user.local.name || user.facebook.name %></a></li>
+				<li><a href="/logout" class="white-text text-accent-2">Logout</a></li>
+				<%}%>
+			</ul>
+
+			<ul id="nav-mobile" class="side-nav">
+				<li><a href="#" class="teal-text text-darken-4">Navbar Link</a></li>
+			</ul>
+			<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+		</div>
+	</nav>
+	<%- body %>
+	<footer class="page-footer teal darken-4">
+		<div class="container">
+			<div class="row">
+				<div class="col l3 s12">
+					<h5 class="white-text">Connect with Us</h5>
+					<ul>
+						<li><a class="white-text" href="#!">Facebook</a></li>
+						<li><a class="white-text" href="#!">Twitter</a></li>
+						<li><a class="white-text" href="#!">Instagram</a></li>
+					</ul>
+				</div>
+				<div class="col l3 s12">
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container">
+			Created by SeaFoam Productions, inc.
+			</div>
+		</div>
+	</footer>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+	<script type="text/javascript" src="https://cdn.socket.io/socket.io-1.3.7.js"></script>
+	<script type="text/javascript">
+	$('.button-collapse').sideNav();
+	</script>
 </body>
 </html>

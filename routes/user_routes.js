@@ -3,13 +3,16 @@ var express = require('express')
     ,userController = require('../controllers/user_controller.js')
     ,userRouter = express.Router()
 
+userRouter.get('/',  function(req, res){
+        res.render('home', {user: req.user})
+    })
 userRouter.route('/test')
   .get(userController.allUsers)
   .post(userController.createUser)
 
 userRouter.route('/login')
     .get(function(req,res){
-        res.render('login', {message: req.flash('loginMessage')})
+        res.render('login', {message: req.flash('loginMessage'),user: req.user})
     })
     .post(passport.authenticate('local-login', {
         successRedirect: '/profile'
@@ -19,7 +22,7 @@ userRouter.route('/login')
 
 userRouter.route('/signup')
     .get(function(req,res){
-        res.render('signup', {message: req.flash('signupMessage')})
+        res.render('signup', {message: req.flash('signupMessage'),user: req.user})
     })
     .post(passport.authenticate('local-signup',{
         successRedirect: '/profile'
