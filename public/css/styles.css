@@ -26,3 +26,11 @@ main {
 #index-banner.section.no-pad-bot {
   background: url('/seafoam-copy.jpg') no-repeat center fixed;
 }
+
+.delete {
+  width: 100px;
+  height: 50px;
+  border-radius: 5%;
+  background-color: red;
+  color: white;
+}

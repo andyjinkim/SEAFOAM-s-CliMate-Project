@@ -2,10 +2,19 @@ var express = require('express')
     ,passport = require('passport')
     ,userController = require('../controllers/user_controller.js')
     ,userRouter = express.Router()
+    ,User = require('../models/user_model.js')
 
 userRouter.get('/',  function(req, res){
         res.render('home', {user: req.user})
     })
+
+userRouter.get('/index', function(req, res){
+  User.find({}, function(err, users){
+    if(err) console.log(err)
+    res.json(users)
+  })
+})
+
 userRouter.route('/test')
   .get(userController.allUsers)
   .post(userController.createUser)
@@ -57,10 +66,12 @@ function isLoggedIn(req, res, next) {
 }
 
 
-userRouter.route('/user/:user_id')
-  .get(userController.showUser)
+userRouter.route('/destroy/:user_id')
+  .delete(userController.deleteUser)
+  
+  // .get(userController.showUser)
   // REMEMBER TO DO AN UPDATE
   // .put(userController.updateUser)
-  .delete(userController.deleteUser)
+  // .delete(userController.deleteUser)
 
 module.exports = userRouter

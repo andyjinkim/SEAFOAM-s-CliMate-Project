@@ -365,6 +365,25 @@ function getEstimatesForUserLocation(latitude,longitude) {
   });
 }
 
+$('.delete').on('click', function(){
+	$.ajax({
+		url: '/profile',
+		method: 'GET',
+		success: function(user){
+		var id = user._id
+		$.ajax({
+			url: '/destroy/565b9d0f7b9363b90583365d',
+			method: 'DELETE',
+			success: function(data){
+				User.findOneAndRemove({_id:req.params.user_id}, function(err, user){
+					if(err) res.json({err:err})
+					res.json({success: true, message: 'User has been obliterated into the ether.'})
+				})
+			}
+		})
+	}
+})
+})
 //Get Weather and Call APIs Uber and Yelp for SEARCH location (GEO Coordinates)
 //Stream twitter based on input city
 $('#submit').on('click', function(){
@@ -413,11 +432,13 @@ $('#submit').on('click', function(){
     }
   })
 })
-``
+
 socket.on('tweets', function(tweet){
   console.log(tweet)
   $(".twitterStream").text(tweet.text)
 })
+
+
 
 //show details of the current days weather
 $('.showDetails').on('click',function(){
