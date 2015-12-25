@@ -18,13 +18,41 @@ body {
   flex-direction: column;
 }
 
+#canvas-holder {
+  overflow: hidden;
+  border: 5px solid black;
+  /*background: url('/window.jpg');*/
+  height: 480px;
+  width: 350px;
+}
+
+#canvas{
+  height: 480px;
+  width: 350px;
+  border: 10px ridge whitesmoke;
+  margin-top: 10px;
+  z-index: -1;
+}
+
+.col.m3{
+  position: relative;
+}
+
 main {
   flex: 1 0 auto;
 }
-
-
-#index-banner.section.no-pad-bot {
+#index-banner{
   background: url('/seafoam-copy.jpg') no-repeat center fixed;
+}
+
+
+#uberPic{
+  float: left;
+  margin-right: 10px;
+}
+
+#facebook-submit{
+  font-size: 20px;
 }
 
 .delete {
@@ -34,3 +62,31 @@ main {
   background-color: red;
   color: white;
 }
+
+#twit-logo{
+  /*margin-left: -220px;*/
+}
+
+#twitter-container{
+  height: 300px;
+  overflow: scroll;
+}
+
+#toast-container {
+    position: relative !important;
+    bottom: 0px !important;
+    left: 0px !important;
+    /*height: auto;
+    width: auto;*/
+}
+
+
+.toast {
+    /*position: fixed !important;
+    bottom: 0px !important;
+    left: 0px !important;*/
+}
+
+/*.twitterStream{
+  color: white;
+}*/

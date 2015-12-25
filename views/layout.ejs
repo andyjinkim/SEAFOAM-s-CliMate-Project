@@ -10,7 +10,7 @@
 </head>
 <body>
 	<nav class="teal lighten-2 fixed" role="navigation">
-		<div class="nav-wrapper container "><a  id="logo-container" href="/" class="brand-logo teal-text text-darken-3">SeaFoam</a>
+		<div class="nav-wrapper container "><a  id="logo-container" href="/" class="brand-logo teal-text text-darken-3">CliMate by SeaFoam</a>
 
 			<ul class="right hide-on-med-and-down">
 				<% if( user == undefined || user == '') {%>
@@ -28,15 +28,15 @@
 		</div>
 	</nav>
 	<%- body %>
-	<footer class="page-footer teal darken-4">
+	<footer class="page-footer teal ">
 		<div class="container">
 			<div class="row">
 				<div class="col l3 s12">
 					<h5 class="white-text">Connect with Us</h5>
-					<ul>
-						<li><a class="white-text" href="#!">Facebook</a></li>
-						<li><a class="white-text" href="#!">Twitter</a></li>
-						<li><a class="white-text" href="#!">Instagram</a></li>
+					<ul >
+						<li style="display: inline-block"><a class="white-text" href="#!">Facebook</a></li>
+						|<li style="display: inline-block"><a class="white-text" href="#!">Twitter</a></li>
+						|<li style="display: inline-block"><a class="white-text" href="#!">Instagram</a></li>
 					</ul>
 				</div>
 				<div class="col l3 s12">
@@ -56,7 +56,6 @@
 	</footer>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
-	<script type="text/javascript" src="https://cdn.socket.io/socket.io-1.3.7.js"></script>
 	<script type="text/javascript">
 	$('.button-collapse').sideNav();
 	</script>

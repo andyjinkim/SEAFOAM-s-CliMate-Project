@@ -53,6 +53,7 @@ userRouter.get('/auth/facebook/callback', passport.authenticate('facebook', {
 userRouter.get('/logout', function(req, res){
   req.logout()
   res.redirect('/')
+  console.log('logout path hit')
 })
 
 // userRouter.get('/settings', function(req, res){
@@ -68,10 +69,8 @@ function isLoggedIn(req, res, next) {
 
 userRouter.route('/destroy/:user_id')
   .delete(userController.deleteUser)
-  
+
   // .get(userController.showUser)
   // REMEMBER TO DO AN UPDATE
-  // .put(userController.updateUser)
-  // .delete(userController.deleteUser)
 
 module.exports = userRouter
