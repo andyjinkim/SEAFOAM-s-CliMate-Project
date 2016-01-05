@@ -14,6 +14,10 @@ Project Outline: https://github.com/eshahla/SEAFOAM-s-CliMate-Project/blob/maste
 
 The primary service of CliMate is to provide a real-time visual representation of the weather for a user-queried city in any country. The application also provides on-demand services to the user that are often considered in light of the weather of the day. This markdown will provide full descriptive details about CliMate, including which APIs will be utilized, technologies used (langauages, frameworks, packages, etc.), where the application is hosted online, etc.
 
+Note: CORS extension must be installed to allow for multiple requests to be sent to third-party APIs. Uber and Twitter may not populate unless CORS is installed. 
+
+CORS: https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en
+
 ### **Contents**
 
 - Team SEAFOAM
