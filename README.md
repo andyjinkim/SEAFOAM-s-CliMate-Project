@@ -5,7 +5,7 @@ This is the README markdown for SEAFOAM's CliMate Project.
 
 GitHub Repository: https://github.com/eshahla/SEAFOAM-s-CliMate-Project
 
-Heroku Application: https://aqueous-tundra-8188.herokuapp.com/
+Heroku Application: https://climate-by-seafoam.herokuapp.com/
 
 Trello Workflow: https://trello.com/b/XiWXIJDc/project-3-workflow
 
